@@ -3,10 +3,20 @@ package pl.wsb;
 public class Main {
     public static void main(String[] args) {
 
-        Client client = new Client();
-        client.setFirstname("Jarek");
-        client.setStatus(ClientStatus.PREMIUM);
+        ClientService clientService = new ClientService();
+        String clientId = clientService.createNewClient("Jan", "Kowalski");
+        String clientId2 = clientService.createNewClient("Anna", "Lizak");
 
-        System.out.println(client.getFirstname());
+        clientService.activatePremiumAccount(clientId);
+        clientService.activatePremiumAccount(clientId2);
+
+
+
+        System.out.println(clientService.getNumberOfPremiumClients());
+
+
+
+
+//        System.out.println(clientService.createNewClient("Adam", "Gromadzki"));
     }
 }
